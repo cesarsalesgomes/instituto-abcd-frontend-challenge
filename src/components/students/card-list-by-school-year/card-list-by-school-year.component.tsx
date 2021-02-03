@@ -4,11 +4,10 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import studentCardListStyles from './card-list-by-school-year.style';
-import { Student } from '../../../store/students/types';
-import SchoolYear from '../../../enums/school-grade.enum';
 import StudentCard from '../card/student-card.component';
+import { StudentsListBySchoolYear } from '../../../pages/students/list/students-list.interfaces';
 
-const StudentCardListBySchoolYear: React.FC<{ schoolYear: SchoolYear, students: Student[] }> = ({
+const StudentCardListBySchoolYear: React.FC<StudentsListBySchoolYear> = ({
   schoolYear, students,
 }) => {
   const classes = studentCardListStyles();

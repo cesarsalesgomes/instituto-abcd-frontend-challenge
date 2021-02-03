@@ -18,7 +18,7 @@ async function getJWTToken(email: string, password: string) {
 
 function dispatchSuccess(token: string, dispatch: Dispatch<any>, history: any) {
   dispatch(loadSuccess({ token }));
-  history.push(RouteConstants.DASHBOARD_ROUTE);
+  history.push(RouteConstants.STUDENTS_ROUTE);
 }
 
 function dispatchError(dispatch: Dispatch<any>) {

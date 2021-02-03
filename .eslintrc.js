@@ -45,7 +45,7 @@ module.exports = {
     'react/forbid-prop-types': 'off',
     'react/jsx-indent': 'off',
     indent: 'off',
-
+    'class-methods-use-this': 'off',
   },
   settings: {
     'import/resolver': {

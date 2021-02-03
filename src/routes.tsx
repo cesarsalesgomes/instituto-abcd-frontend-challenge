@@ -4,11 +4,13 @@ import PrivateRoute from './components/authentication/private.component';
 import RouteConstants from './constants/routes';
 import Dashboard from './pages/dashboard/dashboard';
 import Login from './pages/login/login.component';
+import StudentsList from './pages/students/list/students-list.component';
 
 const MainRoutes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Login} />
     <PrivateRoute path={RouteConstants.DASHBOARD_ROUTE} component={Dashboard} />
+    <PrivateRoute path={RouteConstants.STUDENTS_ROUTE} component={StudentsList} />
   </Switch>
 );
 
