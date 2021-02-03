@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-indent */
-/* eslint-disable indent */
 import React from 'react';
 import {
   Typography, Card, CardContent, CardMedia, Box, Grid,

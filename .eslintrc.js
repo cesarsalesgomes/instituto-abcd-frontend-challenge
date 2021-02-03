@@ -40,6 +40,12 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    'react/jsx-props-no-spreading': 'off',
+    'react/no-array-index-key': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/jsx-indent': 'off',
+    indent: 'off',
+
   },
   settings: {
     'import/resolver': {
