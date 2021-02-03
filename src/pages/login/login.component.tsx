@@ -3,11 +3,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Box, Grid } from '@material-ui/core';
 
+import { useSelector } from 'react-redux';
 import loginStyles from './login.style';
 import useLogin from './login.hooks';
+import { ApplicationState } from '../../store';
 
 const Login: React.FC = () => {
   const classes = loginStyles();
+  const { loading } = useSelector((state: ApplicationState) => state?.login);
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -55,7 +58,7 @@ const Login: React.FC = () => {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" fullWidth variant="contained" className={classes.submit}>
+            <Button type="submit" disabled={loading} fullWidth variant="contained" className={classes.submit}>
               Login
             </Button>
           </form>
