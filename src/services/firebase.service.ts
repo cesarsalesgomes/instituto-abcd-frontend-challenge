@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import FirebaseConstants from '../constants/firebase';
+import SchoolYear from '../enums/school-grade.enum';
+import { Student } from '../store/students/types';
 
 export default class FirebaseService {
   private static instance: FirebaseService;
@@ -30,5 +32,29 @@ export default class FirebaseService {
 
   public async getAuthenticatedUserToken() {
     return this.firebase.auth().currentUser?.getIdToken();
+  }
+
+  public getStudents(): Student[] {
+    return [{
+      name: 'Leila',
+      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
+      schoolYear: SchoolYear.SECOND,
+    }, {
+      name: 'Lourders',
+      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
+      schoolYear: SchoolYear.FIRST,
+    }, {
+      name: 'Zé',
+      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
+      schoolYear: SchoolYear.FIRST,
+    }, {
+      name: 'Francisco',
+      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
+      schoolYear: SchoolYear.SECOND,
+    }, {
+      name: 'Maria',
+      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
+      schoolYear: SchoolYear.PRE,
+    }];
   }
 }

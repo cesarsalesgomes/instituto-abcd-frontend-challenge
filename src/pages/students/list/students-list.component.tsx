@@ -5,11 +5,14 @@ import Grid from '@material-ui/core/Grid';
 import StudentCardListBySchoolYear from '../../../components/students/card-list-by-school-year/card-list-by-school-year.component';
 import studentListStyles from './students-list.styles';
 import StudentsListFactory from './students-list.factory';
+import FirebaseService from '../../../services/firebase.service';
 
 const StudentsList: React.FC = () => {
   const classes = studentListStyles();
 
-  const studentsListBySchoolYear = StudentsListFactory.Instance.createStudentsListBySchoolYearFromStudents();
+  const studentsFromFirestore = FirebaseService.Instance.getStudents();
+
+  const studentsListBySchoolYear = StudentsListFactory.Instance.createStudentsListBySchoolYearFromStudents(studentsFromFirestore);
 
   return (
     <Grid container>
