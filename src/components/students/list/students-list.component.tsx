@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, CircularProgress, Typography } from '@material-ui/core';
-import StudentCardListBySchoolYear from '../../../components/students/card-list-by-school-year/card-list-by-school-year.component';
+import StudentCardListBySchoolYear from '../card-list-by-school-year/card-list-by-school-year.component';
 import studentListStyles from './students-list.styles';
 import FirebaseService from '../../../services/firebase.service';
 import { loadFailure, loadRequest, loadSuccess } from '../../../store/students/list/actions';
@@ -33,7 +33,7 @@ const StudentsList: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Box>
+    <Box className={classes.box}>
       {studentsList.loading ? (
         <Grid container justify="center" className={classes.container}>
           <CircularProgress />

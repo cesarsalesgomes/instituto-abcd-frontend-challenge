@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const studentListStyles = makeStyles((theme) => ({
+  box: {
+    width: '100%',
+  },
   container: {
     marginTop: theme.spacing(3),
   },

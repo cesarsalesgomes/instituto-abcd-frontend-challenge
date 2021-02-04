@@ -5,6 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Routes from './routes';
 import store, { persistor } from './store';
@@ -13,6 +14,9 @@ const App: React.FC = () => {
   const theme = React.useMemo(
     () => createMuiTheme({
       palette: {
+        background: {
+          default: '#F7F7F7',
+        },
         primary: {
           main: '#47CDFF',
         },
@@ -26,6 +30,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Router>

@@ -6,6 +6,7 @@ const studentsNavbarStyles = makeStyles((theme) => ({
     height: '126px',
     borderRadius: '25px',
     padding: theme.spacing(0, 3, 0, 3),
+    marginTop: theme.spacing(3),
   },
   containerCard: {
     height: '100%',
