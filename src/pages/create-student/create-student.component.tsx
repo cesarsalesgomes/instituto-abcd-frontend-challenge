@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from 'react';
@@ -13,12 +14,22 @@ import IconShool from '../../assets/icons/icon_school.svg';
 const CreateStudent: React.FC = () => {
   const classes = studentsStyles();
 
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [name, setName] = useState<string>('');
   const [school, setSchool] = useState<string>('');
   const [terms, setTerms] = useState<boolean>(false);
 
   console.log(name);
   console.log(school);
+
+  // Avatar
+  const uploadImageHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const image = event.target.files[0];
+
+      setAvatarUrl(URL.createObjectURL(image as File));
+    }
+  };
 
   // Ano escolar
   const schoolYearSliderMarks = [
@@ -48,6 +59,26 @@ const CreateStudent: React.FC = () => {
         <Card className={classes.card}>
           <form className={classes.form}>
             <Grid container className={classes.containerCard} direction="row" justify="center">
+
+              {/* Avatar */}
+              <Grid item xs={12} className={classes.gridItemAvatarImage}>
+                <img src={avatarUrl as string} className={classes.avatarImage} />
+              </Grid>
+              <Grid item xs={12} className={classes.gridItemAvatarInput}>
+                <input
+                  accept="image/*"
+                  className={classes.avatarInput}
+                  id="raised-button-file"
+                  multiple
+                  type="file"
+                  onChange={(e) => uploadImageHandler(e)}
+                />
+                <label htmlFor="raised-button-file">
+                  <Button variant="contained" className={classes.avatarButton} component="span">
+                    Mudar avatar
+                  </Button>
+                </label>
+              </Grid>
 
               {/* Nome Completo */}
               <Grid item xs={12}>

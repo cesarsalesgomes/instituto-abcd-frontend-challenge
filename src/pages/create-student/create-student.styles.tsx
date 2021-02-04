@@ -26,6 +26,36 @@ const studentsStyles = makeStyles((theme) => ({
   gridContainerReverse: {
     height: '100%',
   },
+  gridItemAvatarImage: {
+    textAlign: 'center',
+    marginBottom: theme.spacing(7),
+  },
+  gridItemAvatarInput: {
+    textAlign: 'center',
+    position: 'absolute',
+    paddingTop: '140px',
+  },
+  avatarInput: {
+    display: 'none',
+  },
+  avatarImage: {
+    borderRadius: '22px',
+    border: '2px solid #47CDFF',
+    boxSizing: 'border-box',
+    height: '157px',
+    width: '157px',
+  },
+  avatarButton: {
+    marginBottom: theme.spacing(4),
+    borderRadius: '20px',
+    border: '1px solid #47CDFF',
+    boxSizing: 'border-box',
+    boxShadow: '0px 4px 0px #47CDFF',
+    backgroundColor: '#FFFFFF',
+    color: '#47CDFF',
+    height: '47px',
+    width: '218px',
+  },
   gridItemSlider: {
     width: '100%',
   },
@@ -64,6 +94,7 @@ const studentsStyles = makeStyles((theme) => ({
     backgroundColor: '#47CDFF',
     color: 'white',
     height: '50px',
+    boxShadow: '0px 4px 0px #25ABE6',
   },
 }));
 
