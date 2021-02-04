@@ -11,4 +11,6 @@ export default class FirebaseConstants {
   public static readonly MESSAGING_SENDER_ID: string = process.env.REACT_APP_MESSAGING_SENDER_ID as string;
 
   public static readonly APP_ID: string = process.env.REACT_APP_APP_ID as string;
+
+  public static readonly STUDENTS_COLLECTION: string = 'students';
 }

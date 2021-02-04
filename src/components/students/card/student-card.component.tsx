@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import studentCardStyles from './student-card.style';
-import { Student } from '../../../store/students/types';
+import { Student } from '../../../store/students/list/types';
 
 const StudentCard: React.FC<Student> = ({
   imageUrl, name, schoolYear,

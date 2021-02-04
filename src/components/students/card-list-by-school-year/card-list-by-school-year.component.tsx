@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import studentCardListStyles from './card-list-by-school-year.style';
 import StudentCard from '../card/student-card.component';
-import { StudentsListBySchoolYear } from '../../../pages/students/list/students-list.interfaces';
+import { StudentsListBySchoolYear } from '../../../store/students/list/types';
 
 const StudentCardListBySchoolYear: React.FC<StudentsListBySchoolYear> = ({
   schoolYear, students,

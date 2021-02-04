@@ -1,8 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-restricted-syntax */
 import SchoolYear from '../../../enums/school-grade.enum';
-import { Student } from '../../../store/students/types';
-import { StudentsListBySchoolYear } from './students-list.interfaces';
+import { Student, StudentsListBySchoolYear } from '../../../store/students/list/types';
 
 export default class StudentsListFactory {
   private static instance: StudentsListFactory;

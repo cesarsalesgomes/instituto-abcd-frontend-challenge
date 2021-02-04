@@ -1,13 +1,16 @@
+/* eslint-disable import/no-duplicates */
 import firebase from 'firebase/app';
-import 'firebase/auth';
 import FirebaseConstants from '../constants/firebase';
-import SchoolYear from '../enums/school-grade.enum';
-import { Student } from '../store/students/types';
+import 'firebase/auth';
+import 'firebase/firestore';
+import { Student } from '../store/students/list/types';
 
 export default class FirebaseService {
   private static instance: FirebaseService;
 
   private firebase: firebase.app.App;
+
+  private firestore: firebase.firestore.Firestore;
 
   constructor() {
     this.firebase = firebase.initializeApp({
@@ -18,6 +21,8 @@ export default class FirebaseService {
       messagingSenderId: FirebaseConstants.MESSAGING_SENDER_ID,
       appId: FirebaseConstants.APP_ID,
     });
+
+    this.firestore = firebase.firestore();
   }
 
   public static get Instance(): FirebaseService {
@@ -34,27 +39,13 @@ export default class FirebaseService {
     return this.firebase.auth().currentUser?.getIdToken();
   }
 
-  public getStudents(): Student[] {
-    return [{
-      name: 'Leila',
-      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
-      schoolYear: SchoolYear.SECOND,
-    }, {
-      name: 'Lourders',
-      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
-      schoolYear: SchoolYear.FIRST,
-    }, {
-      name: 'Zé',
-      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
-      schoolYear: SchoolYear.FIRST,
-    }, {
-      name: 'Francisco',
-      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
-      schoolYear: SchoolYear.SECOND,
-    }, {
-      name: 'Maria',
-      imageUrl: 'https://i.ibb.co/xHv9JY9/zig.png',
-      schoolYear: SchoolYear.PRE,
-    }];
+  public async getStudents() {
+    const students: Student[] = [];
+
+    const documents = await this.firestore.collection(FirebaseConstants.STUDENTS_COLLECTION).get();
+
+    documents.forEach((doc) => students.push(doc.data() as Student));
+
+    return students;
   }
 }
