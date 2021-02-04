@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import loginStyles from './login.style';
 import useLogin from './login.hooks';
 import { ApplicationState } from '../../store';
+import StringUtils from '../../utils/String.utils';
 
 const Login: React.FC = () => {
   const classes = loginStyles();
@@ -14,6 +15,18 @@ const Login: React.FC = () => {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const disableSubmit = (): boolean => {
+    if (!(email && StringUtils.validateEmail(email))) {
+      return true;
+    }
+
+    if (!(password)) {
+      return true;
+    }
+
+    return false;
+  };
 
   /**
    * Login Hook
@@ -43,6 +56,7 @@ const Login: React.FC = () => {
               label="Email"
               name="email"
               type="email"
+              inputProps={{ 'data-testid': 'email' }}
               autoFocus
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -54,11 +68,19 @@ const Login: React.FC = () => {
               name="password"
               label="Senha"
               type="password"
+              inputProps={{ 'data-testid': 'password' }}
               id="password"
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" disabled={loading} fullWidth variant="contained" className={classes.submit}>
+            <Button
+              type="submit"
+              data-testid="button-submit"
+              disabled={loading || disableSubmit()}
+              fullWidth
+              variant="contained"
+              className={classes.submit}
+            >
               Login
             </Button>
           </form>
