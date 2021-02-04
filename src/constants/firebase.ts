@@ -13,4 +13,6 @@ export default class FirebaseConstants {
   public static readonly APP_ID: string = process.env.REACT_APP_APP_ID as string;
 
   public static readonly STUDENTS_COLLECTION: string = 'students';
+
+  public static readonly STORAGE_IMAGES_CHILD: string = 'images';
 }

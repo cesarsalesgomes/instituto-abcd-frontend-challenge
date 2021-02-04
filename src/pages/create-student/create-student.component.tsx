@@ -20,6 +20,7 @@ const CreateStudent: React.FC = () => {
   const { loading } = useSelector((state: ApplicationState) => state?.createStudent);
 
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [avatarFile, setAvatarFile] = useState<File>();
   const [name, setName] = useState<string>('');
   const [school, setSchool] = useState<string>('');
   const [schoolYear, setSchoolYear] = useState<SchoolYear>(SchoolYear.PRE);
@@ -31,6 +32,7 @@ const CreateStudent: React.FC = () => {
       const image = event.target.files[0];
 
       setAvatarUrl(URL.createObjectURL(image as File));
+      setAvatarFile(image as File);
     }
   };
 
@@ -87,7 +89,7 @@ const CreateStudent: React.FC = () => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    createStudent({ name, schoolYear, imageUrl: '' });
+    createStudent(name, schoolYear, avatarFile as File);
   };
 
   return (

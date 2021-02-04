@@ -8,7 +8,7 @@ import { loadRequest, loadSuccess, loadFailure } from '../../store/students/crea
 import FirebaseService from '../../services/firebase.service';
 import RouteConstants from '../../constants/routes';
 import MessagesConstants from '../../constants/messages';
-import { Student } from '../../store/students/list/types';
+import SchoolYear from '../../enums/school-grade.enum';
 
 function dispatchSuccess(dispatch: Dispatch<any>, history: any) {
   dispatch(loadSuccess());
@@ -25,11 +25,13 @@ const useCreateStudent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const createStudent = useCallback(async (student: Student) => {
+  const createStudent = useCallback(async (name: string, schoolYear: SchoolYear, image: File) => {
     dispatch(loadRequest());
 
     try {
-      await FirebaseService.Instance.createStudent(student);
+      const imageUrl = await FirebaseService.Instance.uploadImageOnFirestorage(image);
+
+      await FirebaseService.Instance.createStudent({ name, schoolYear, imageUrl });
 
       dispatchSuccess(dispatch, history);
       history.push(RouteConstants.STUDENTS_ROUTE);
