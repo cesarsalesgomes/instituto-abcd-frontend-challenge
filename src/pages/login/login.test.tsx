@@ -66,13 +66,21 @@ describe('[Login] Testes:', () => {
     const passwordInput = getByTestId('password');
     const submitButton = getByTestId('button-submit');
 
-    fireEvent.change(emailInput, { target: { value: 'usuarioinexistente@gmail.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'usuarioinexistente' } });
+    fireEvent.change(emailInput, { target: { value: 'cesar@gmail.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'cesargmail' } });
 
     fireEvent.click(submitButton);
 
     await waitFor(() => { });
 
-    expect(await screen.findByText('Usuário inválido.')).not.toBeInTheDocument();
+    let text;
+
+    try {
+      text = await screen.findByText('Usuário inválido.');
+    } catch (error) {
+      text = null;
+    }
+
+    expect(text).toBeNull();
   });
 });
