@@ -7,20 +7,23 @@ import {
   Box,
   Button, Card, Checkbox, FormControl, FormControlLabel, Grid, Icon, InputAdornment, InputLabel, OutlinedInput, Slider,
 } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 import studentsStyles from './create-student.styles';
 import IconPerson from '../../assets/icons/icon_person.svg';
 import IconShool from '../../assets/icons/icon_school.svg';
+import SchoolYear from '../../enums/school-grade.enum';
+import useCreateStudent from './create-student.hooks';
+import { ApplicationState } from '../../store';
 
 const CreateStudent: React.FC = () => {
   const classes = studentsStyles();
+  const { loading } = useSelector((state: ApplicationState) => state?.createStudent);
 
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [name, setName] = useState<string>('');
   const [school, setSchool] = useState<string>('');
+  const [schoolYear, setSchoolYear] = useState<SchoolYear>(SchoolYear.PRE);
   const [terms, setTerms] = useState<boolean>(false);
-
-  console.log(name);
-  console.log(school);
 
   // Avatar
   const uploadImageHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,11 +56,45 @@ const CreateStudent: React.FC = () => {
 
   const valueLabelFormat = (value: number) => schoolYearSliderMarks.findIndex((mark) => mark.value === value);
 
+  const schoolYearHandler = (event: any, newValue: number | number[]) => {
+    switch (newValue) {
+      case schoolYearSliderMarks[0].value:
+        setSchoolYear(SchoolYear.PRE);
+        break;
+      case schoolYearSliderMarks[1].value:
+        setSchoolYear(SchoolYear.FIRST);
+        break;
+      case schoolYearSliderMarks[2].value:
+        setSchoolYear(SchoolYear.SECOND);
+        break;
+      case schoolYearSliderMarks[3].value:
+        setSchoolYear(SchoolYear.THIRD);
+        break;
+      default:
+        setSchoolYear(SchoolYear.PRE);
+        break;
+    }
+  };
+
+  // Envio de formulário
+  const disableSubmitButton = () => {
+    if (!(avatarUrl && name && school && schoolYear >= 0 && terms)) return true;
+
+    return false;
+  };
+
+  const createStudent = useCreateStudent();
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    createStudent({ name, schoolYear, imageUrl: '' });
+  };
+
   return (
     <Grid container className={classes.containerCard} direction="row" justify="center">
       <Grid item xs={10} sm={8} md={7} lg={6}>
         <Card className={classes.card}>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={onSubmit}>
             <Grid container className={classes.containerCard} direction="row" justify="center">
 
               {/* Avatar */}
@@ -154,13 +191,14 @@ const CreateStudent: React.FC = () => {
                           Ano escolar
                         </Box>
                         <Slider
-                          defaultValue={0}
+                          defaultValue={SchoolYear.PRE}
                           aria-labelledby="discrete-slider-custom"
                           step={null}
                           valueLabelFormat={valueLabelFormat}
                           valueLabelDisplay="auto"
                           marks={schoolYearSliderMarks}
                           className={classes.gridItemSlider}
+                          onChange={schoolYearHandler}
                         />
                       </Grid>
                       <Grid item>
@@ -197,7 +235,7 @@ const CreateStudent: React.FC = () => {
               </Grid>
 
               <Grid item xs={6}>
-                <Button type="submit" fullWidth variant="contained" className={classes.submit}>
+                <Button type="submit" disabled={disableSubmitButton() || loading} fullWidth variant="contained" className={classes.submit}>
                   Adicionar aluno
                 </Button>
               </Grid>

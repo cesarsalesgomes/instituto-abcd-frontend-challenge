@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { loadRequest, loadSuccess, loadFailure } from '../../store/login/actions';
 import FirebaseService from '../../services/firebase.service';
 import RouteConstants from '../../constants/routes';
-import ErrorConstants from '../../constants/errors';
+import MessagesConstants from '../../constants/messages';
 
 async function getJWTToken(email: string, password: string) {
   const firebaseService = FirebaseService.Instance;
@@ -23,7 +23,7 @@ function dispatchSuccess(token: string, dispatch: Dispatch<any>, history: any) {
 
 function dispatchError(dispatch: Dispatch<any>) {
   dispatch(loadFailure());
-  toast.error(ErrorConstants.ERROR_LOGIN);
+  toast.error(MessagesConstants.ERROR_LOGIN);
 }
 
 function checkToken(dispatch: Dispatch<any>, history: any, token?: string) {

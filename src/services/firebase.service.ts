@@ -48,4 +48,8 @@ export default class FirebaseService {
 
     return students;
   }
+
+  public async createStudent(student: Student) {
+    return this.firestore.collection(FirebaseConstants.STUDENTS_COLLECTION).add(student);
+  }
 }

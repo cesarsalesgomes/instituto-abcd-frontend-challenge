@@ -5,19 +5,23 @@ import storage from 'redux-persist/lib/storage';
 /* States */
 import { LoginState } from './login/types';
 import { StudentsListState } from './students/list/types';
+import { CreateStudentState } from './students/create/types';
 
 /* Reducers */
 import login from './login';
 import studentsList from './students/list';
+import createStudent from './students/create';
 
 export interface ApplicationState {
   login: LoginState,
-  studentsList: StudentsListState
+  studentsList: StudentsListState,
+  createStudent: CreateStudentState
 }
 
 const reducers = combineReducers({
   login,
   studentsList,
+  createStudent,
 });
 
 const persistConfig = {
