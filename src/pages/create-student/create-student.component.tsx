@@ -14,6 +14,7 @@ import IconShool from '../../assets/icons/icon_school.svg';
 import SchoolYear from '../../enums/school-grade.enum';
 import useCreateStudent from './create-student.hooks';
 import { ApplicationState } from '../../store';
+import FileUtils from '../../utils/File.utils';
 
 const CreateStudent: React.FC = () => {
   const classes = studentsStyles();
@@ -31,7 +32,7 @@ const CreateStudent: React.FC = () => {
     if (event.target.files) {
       const image = event.target.files[0];
 
-      setAvatarUrl(URL.createObjectURL(image as File));
+      setAvatarUrl(FileUtils.createObjectUrl(image));
       setAvatarFile(image as File);
     }
   };
@@ -111,6 +112,7 @@ const CreateStudent: React.FC = () => {
                   multiple
                   type="file"
                   onChange={(e) => uploadImageHandler(e)}
+                  data-testid="avatar"
                 />
                 <label htmlFor="raised-button-file">
                   <Button variant="contained" className={classes.avatarButton} component="span">
@@ -133,6 +135,7 @@ const CreateStudent: React.FC = () => {
                     id="name"
                     classes={{ root: classes.inputRadius }}
                     onChange={(e) => setName(e.target.value)}
+                    inputProps={{ 'data-testid': 'name' }}
                     startAdornment={(
                       <InputAdornment position="start">
                         <Icon>
@@ -167,6 +170,7 @@ const CreateStudent: React.FC = () => {
                       </InputAdornment>
                     )}
                     labelWidth={50}
+                    inputProps={{ 'data-testid': 'school' }}
                   />
                 </FormControl>
               </Grid>
@@ -201,6 +205,7 @@ const CreateStudent: React.FC = () => {
                           marks={schoolYearSliderMarks}
                           className={classes.gridItemSlider}
                           onChange={schoolYearHandler}
+                          data-testid="schoolYear"
                         />
                       </Grid>
                       <Grid item>
@@ -227,7 +232,7 @@ const CreateStudent: React.FC = () => {
               {/* Termos de aceite */}
               <Grid item xs={12} className={classes.gridItemTerms}>
                 <FormControlLabel
-                  control={<Checkbox checked={terms} onChange={(e) => setTerms(e.target.checked)} />}
+                  control={<Checkbox checked={terms} onChange={(e) => setTerms(e.target.checked)} data-testid="terms" />}
                   label={(
                     <Box component="span" className={classes.termsDescriptionLabel}>
                       Eu autorizo o EduEdu a coletar e processar os dados do meu filho(a) conforme a política de privacidade.
@@ -237,7 +242,14 @@ const CreateStudent: React.FC = () => {
               </Grid>
 
               <Grid item xs={6}>
-                <Button type="submit" disabled={disableSubmitButton() || loading} fullWidth variant="contained" className={classes.submit}>
+                <Button
+                  type="submit"
+                  disabled={disableSubmitButton() || loading}
+                  fullWidth
+                  variant="contained"
+                  className={classes.submit}
+                  data-testid="button-submit"
+                >
                   Adicionar aluno
                 </Button>
               </Grid>

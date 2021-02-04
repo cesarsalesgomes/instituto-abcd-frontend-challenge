@@ -12,8 +12,11 @@ import SchoolYear from '../../enums/school-grade.enum';
 
 function dispatchSuccess(dispatch: Dispatch<any>, history: any) {
   dispatch(loadSuccess());
-  history.push(RouteConstants.STUDENTS_ROUTE);
   toast.success(MessagesConstants.CREATE_STUDENT_SUCCESS, { position: toast.POSITION.BOTTOM_RIGHT });
+
+  try {
+    history.push(RouteConstants.STUDENTS_ROUTE);
+  } catch (error) { }
 }
 
 function dispatchError(dispatch: Dispatch<any>) {
