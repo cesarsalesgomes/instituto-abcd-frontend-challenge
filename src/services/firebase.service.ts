@@ -55,6 +55,16 @@ export default class FirebaseService {
     return students;
   }
 
+  public async getStudentsWithFilterName(name: string) {
+    const students: Student[] = [];
+
+    const documents = await this.firestore.collection(FirebaseConstants.STUDENTS_COLLECTION).where('name', '==', name).get();
+
+    documents.forEach((doc) => students.push(doc.data() as Student));
+
+    return students;
+  }
+
   public async createStudent(student: Student) {
     return this.firestore.collection(FirebaseConstants.STUDENTS_COLLECTION).add(student);
   }
