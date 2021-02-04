@@ -4,13 +4,21 @@ import Grid from '@material-ui/core/Grid';
 import {
   Button, Card, FormControl, Icon, InputAdornment, InputLabel, OutlinedInput,
 } from '@material-ui/core';
+import { useHistory } from 'react-router';
 import IconPlus from '../../../assets/icons/icon_plus.png';
 import IconSearch from '../../../assets/icons/icon_search.svg';
 
 import studentsNavbarStyles from './students-navbar.styles';
+import RouteConstants from '../../../constants/routes';
 
 const StudentsNavbar: React.FC = () => {
   const classes = studentsNavbarStyles();
+  const history = useHistory();
+
+  const onClickAddStudent = (e: React.FormEvent) => {
+    e.preventDefault();
+    history.push(RouteConstants.CREATE_STUDENTS_ROUTE);
+  };
 
   return (
     <Card className={classes.card}>
@@ -41,6 +49,7 @@ const StudentsNavbar: React.FC = () => {
                 <img src={IconPlus} height={20} width={20} />
               </Icon>
             )}
+            onClick={onClickAddStudent}
           >
             Adicionar novo aluno
           </Button>
