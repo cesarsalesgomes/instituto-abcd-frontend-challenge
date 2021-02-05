@@ -19,6 +19,9 @@ const studentsNavbarStyles = makeStyles((theme) => ({
   inputSearch: {
     borderRadius: '10px',
   },
+  formControl: {
+    width: '100%',
+  },
   button: {
     margin: theme.spacing(3, 0, 3),
     borderRadius: '20px',

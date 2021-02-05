@@ -9,7 +9,7 @@ const contentStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -CssConstants.DRAWER_WIDTH,
-    padding: theme.spacing(0, 10, 0, 10),
+    padding: theme.spacing(0, 5, 0, 5),
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -17,7 +17,7 @@ const contentStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
-    padding: theme.spacing(0, 10, 0, 10),
+    padding: theme.spacing(0, 5, 0, 5),
   },
   drawerHeader: {
     display: 'flex',

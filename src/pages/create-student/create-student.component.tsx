@@ -241,7 +241,7 @@ const CreateStudent: React.FC = () => {
                 />
               </Grid>
 
-              <Grid item xs={8}>
+              <Grid item xs={12} md={8}>
                 <Button
                   type="submit"
                   disabled={disableSubmitButton() || loading}

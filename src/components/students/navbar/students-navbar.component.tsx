@@ -70,26 +70,28 @@ const StudentsNavbar: React.FC = () => {
   return (
     <Card className={classes.card}>
       <Grid container justify="space-between" alignItems="center" className={classes.containerCard}>
-        <FormControl variant="outlined">
-          <InputLabel className={classes.inputLabel}>
-            Pesquisar
-          </InputLabel>
-          <OutlinedInput
-            type="text"
-            classes={{ root: classes.inputSearch }}
-            onChange={(e) => setNameToFilter(e.target.value)}
-            endAdornment={(
-              <InputAdornment position="end">
-                <Icon>
-                  <img src={IconSearch} height={20} width={20} />
-                </Icon>
-              </InputAdornment>
-            )}
-            labelWidth={70}
-            inputProps={{ 'data-testid': 'search' }}
-          />
-        </FormControl>
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={5} lg={4}>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel className={classes.inputLabel}>
+              Pesquisar
+            </InputLabel>
+            <OutlinedInput
+              type="text"
+              classes={{ root: classes.inputSearch }}
+              onChange={(e) => setNameToFilter(e.target.value)}
+              endAdornment={(
+                <InputAdornment position="end">
+                  <Icon>
+                    <img src={IconSearch} height={20} width={20} />
+                  </Icon>
+                </InputAdornment>
+              )}
+              labelWidth={70}
+              inputProps={{ 'data-testid': 'search' }}
+            />
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={6} md={5} lg={3}>
           <Button
             variant="contained"
             className={classes.button}
