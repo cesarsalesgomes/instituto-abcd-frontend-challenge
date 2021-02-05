@@ -1,13 +1,17 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Box, Grid } from '@material-ui/core';
+import {
+  Box, FormControl, Grid, Icon, InputAdornment, InputLabel, OutlinedInput,
+} from '@material-ui/core';
 
 import { useSelector } from 'react-redux';
 import loginStyles from './login.style';
 import useLogin from './login.hooks';
 import { ApplicationState } from '../../store';
 import StringUtils from '../../utils/String.utils';
+import IconPerson from '../../assets/icons/icon_email.svg';
+import IconPassword from '../../assets/icons/icon_password.svg';
 
 const Login: React.FC = () => {
   const classes = loginStyles();
@@ -47,32 +51,59 @@ const Login: React.FC = () => {
           </Grid>
 
           <form className={classes.form} onSubmit={loginOnSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              type="email"
-              inputProps={{ 'data-testid': 'email' }}
-              autoFocus
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Senha"
-              type="password"
-              inputProps={{ 'data-testid': 'password' }}
-              id="password"
-              autoComplete="current-password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+
+            {/* Email */}
+            <FormControl variant="outlined" className={classes.formControlEmail}>
+              <InputLabel>
+                Email
+              </InputLabel>
+              <OutlinedInput
+                type="email"
+                required
+                fullWidth
+                name="email"
+                id="email"
+                classes={{ root: classes.inputRadius }}
+                onChange={(e) => setEmail(e.target.value)}
+                inputProps={{ 'data-testid': 'email' }}
+                autoFocus
+                endAdornment={(
+                  <InputAdornment position="end">
+                    <Icon>
+                      <img src={IconPerson} height={20} width={20} />
+                    </Icon>
+                  </InputAdornment>
+                )}
+                labelWidth={42}
+              />
+            </FormControl>
+
+            {/* Senha */}
+            <FormControl variant="outlined" className={classes.formControlPassword}>
+              <InputLabel>
+                Senha
+              </InputLabel>
+              <OutlinedInput
+                type="password"
+                required
+                fullWidth
+                name="password"
+                id="password"
+                classes={{ root: classes.inputRadius }}
+                onChange={(e) => setPassword(e.target.value)}
+                inputProps={{ 'data-testid': 'password' }}
+                autoFocus
+                endAdornment={(
+                  <InputAdornment position="end">
+                    <Icon>
+                      <img src={IconPassword} height={20} width={20} />
+                    </Icon>
+                  </InputAdornment>
+                )}
+                labelWidth={60}
+              />
+            </FormControl>
+
             <Button
               type="submit"
               data-testid="button-submit"

@@ -21,6 +21,16 @@ const loginStyles = makeStyles((theme) => ({
   form: {
     margin: theme.spacing(0, 4, 0, 4),
   },
+  formControlEmail: {
+    width: '100%',
+  },
+  formControlPassword: {
+    width: '100%',
+    marginTop: theme.spacing(3),
+  },
+  inputRadius: {
+    borderRadius: '10px',
+  },
   submit: {
     margin: theme.spacing(3, 0, 3),
     borderRadius: '20px',
