@@ -3,10 +3,10 @@ import React from 'react';
 import {
   Box,
 } from '@material-ui/core';
-import footerLoginStyles from './footer-login.style';
+import footerDashboardStyles from './footer-dashboard.style';
 
-const FooterLogin: React.FC = () => {
-  const classes = footerLoginStyles();
+const FooterDashboard: React.FC = () => {
+  const classes = footerDashboardStyles();
 
   return (
     <Box className={classes.box}>
@@ -15,4 +15,4 @@ const FooterLogin: React.FC = () => {
   );
 };
 
-export default FooterLogin;
+export default FooterDashboard;

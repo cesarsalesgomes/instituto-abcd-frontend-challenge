@@ -12,7 +12,7 @@ import { ApplicationState } from '../../store';
 import StringUtils from '../../utils/String.utils';
 import IconPerson from '../../assets/icons/icon_email.svg';
 import IconPassword from '../../assets/icons/icon_password.svg';
-import FooterLogin from '../../components/footer/login/footer-login.component';
+import Footer from '../../components/footer/login/footer-login.component';
 
 const Login: React.FC = () => {
   const classes = loginStyles();
@@ -117,7 +117,7 @@ const Login: React.FC = () => {
             </Button>
           </form>
         </Box>
-        <FooterLogin />
+        <Footer />
       </Grid>
     </Grid>
   );

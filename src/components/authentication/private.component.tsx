@@ -7,6 +7,7 @@ import { Route, Redirect } from 'react-router-dom';
 import useAuthentication from './private.hooks';
 import Menu from '../menu/menu.component';
 import privateStyles from './private.style';
+import Footer from '../footer/dashboard/footer-dashboard.component';
 
 const PrivateRoute = (
   { component: Component, path, ...rest }: { component: any, path: string },
@@ -24,6 +25,7 @@ const PrivateRoute = (
             <main className={classes.content}>
               <Component path={path} {...props} />
             </main>
+            <Footer />
           </Container>
         ) : (
             <Redirect to={{
