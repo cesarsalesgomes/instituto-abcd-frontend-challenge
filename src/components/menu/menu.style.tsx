@@ -21,7 +21,7 @@ const menuStyles = makeStyles((theme) => ({
     width: CssConstants.DRAWER_WIDTH,
   },
   menuLabel: {
-    fontSize: 30,
+    fontSize: 17,
     color: '#CACACA',
     fontWeight: 700,
     lineHeight: '36px',

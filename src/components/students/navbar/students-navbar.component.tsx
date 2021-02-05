@@ -71,7 +71,7 @@ const StudentsNavbar: React.FC = () => {
     <Card className={classes.card}>
       <Grid container justify="space-between" alignItems="center" className={classes.containerCard}>
         <FormControl variant="outlined">
-          <InputLabel>
+          <InputLabel className={classes.inputLabel}>
             Pesquisar
           </InputLabel>
           <OutlinedInput

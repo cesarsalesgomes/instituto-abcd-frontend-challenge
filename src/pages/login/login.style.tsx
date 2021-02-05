@@ -28,6 +28,10 @@ const loginStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: theme.spacing(3),
   },
+  inputLabel: {
+    fontWeight: 700,
+    color: '#47CDFF',
+  },
   inputRadius: {
     borderRadius: '10px',
   },
@@ -37,6 +41,9 @@ const loginStyles = makeStyles((theme) => ({
     backgroundColor: '#47CDFF',
     color: 'white',
     height: '50px',
+    fontWeight: 700,
+    lineHeight: '17px',
+    boxShadow: '0px 4px 0px #25ABE6',
   },
 }));
 

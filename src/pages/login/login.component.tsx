@@ -55,7 +55,7 @@ const Login: React.FC = () => {
 
             {/* Email */}
             <FormControl variant="outlined" className={classes.formControlEmail}>
-              <InputLabel>
+              <InputLabel className={classes.inputLabel}>
                 Email
               </InputLabel>
               <OutlinedInput
@@ -81,7 +81,7 @@ const Login: React.FC = () => {
 
             {/* Senha */}
             <FormControl variant="outlined" className={classes.formControlPassword}>
-              <InputLabel>
+              <InputLabel className={classes.inputLabel}>
                 Senha
               </InputLabel>
               <OutlinedInput

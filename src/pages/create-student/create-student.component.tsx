@@ -95,7 +95,7 @@ const CreateStudent: React.FC = () => {
 
   return (
     <Grid container className={classes.containerCard} direction="row" justify="center">
-      <Grid item xs={10} sm={8} md={7} lg={6}>
+      <Grid item xs={10} sm={8} lg={7}>
         <Card className={classes.card}>
           <form className={classes.form} onSubmit={onSubmit}>
             <Grid container className={classes.containerCard} direction="row" justify="center">
@@ -124,7 +124,7 @@ const CreateStudent: React.FC = () => {
               {/* Nome Completo */}
               <Grid item xs={12}>
                 <FormControl variant="outlined" className={classes.formControl}>
-                  <InputLabel>
+                  <InputLabel className={classes.inputLabel}>
                     Nome Completo
                   </InputLabel>
                   <OutlinedInput
@@ -143,7 +143,7 @@ const CreateStudent: React.FC = () => {
                         </Icon>
                       </InputAdornment>
                     )}
-                    labelWidth={118}
+                    labelWidth={132}
                   />
                 </FormControl>
               </Grid>
@@ -151,7 +151,7 @@ const CreateStudent: React.FC = () => {
               {/* Escola */}
               <Grid item xs={12} className={classes.gridItem}>
                 <FormControl variant="outlined" className={classes.formControl}>
-                  <InputLabel>
+                  <InputLabel className={classes.inputLabel}>
                     Escola
                   </InputLabel>
                   <OutlinedInput
@@ -241,7 +241,7 @@ const CreateStudent: React.FC = () => {
                 />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <Button
                   type="submit"
                   disabled={disableSubmitButton() || loading}

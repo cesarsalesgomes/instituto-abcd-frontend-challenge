@@ -13,6 +13,9 @@ import store, { persistor } from './store';
 const App: React.FC = () => {
   const theme = React.useMemo(
     () => createMuiTheme({
+      typography: {
+        fontFamily: '"Montserrat", "Roboto"',
+      },
       palette: {
         background: {
           default: '#F7F7F7',
@@ -22,6 +25,13 @@ const App: React.FC = () => {
         },
         secondary: {
           main: '#47CDFF',
+        },
+      },
+      overrides: {
+        MuiButton: {
+          root: {
+            textTransform: 'none',
+          },
         },
       },
     }),

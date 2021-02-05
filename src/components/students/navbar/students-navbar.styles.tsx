@@ -11,6 +11,11 @@ const studentsNavbarStyles = makeStyles((theme) => ({
   containerCard: {
     height: '100%',
   },
+  inputLabel: {
+    color: 'C3C3C3',
+    fontSize: '14px',
+    fontWeight: 400,
+  },
   inputSearch: {
     borderRadius: '10px',
   },
@@ -21,6 +26,7 @@ const studentsNavbarStyles = makeStyles((theme) => ({
     color: 'white',
     height: '52px',
     width: '100%',
+    fontWeight: 700,
   },
 }));
 

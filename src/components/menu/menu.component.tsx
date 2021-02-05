@@ -42,6 +42,7 @@ const Menu: React.FC = () => {
               </Icon>
             </ListItemIcon>
             <ListItemText
+              disableTypography
               className={classes.menuLabel}
               primary="Perfil dos alunos"
             />
@@ -54,6 +55,7 @@ const Menu: React.FC = () => {
               </Icon>
             </ListItemIcon>
             <ListItemText
+              disableTypography
               className={classes.menuLabel}
               primary="Prova de Português"
             />
@@ -66,6 +68,7 @@ const Menu: React.FC = () => {
               </Icon>
             </ListItemIcon>
             <ListItemText
+              disableTypography
               className={classes.menuLabel}
               primary="Atividades Digitais"
             />
@@ -78,6 +81,7 @@ const Menu: React.FC = () => {
               </Icon>
             </ListItemIcon>
             <ListItemText
+              disableTypography
               className={classes.menuLabel}
               primary="Ajuda"
             />
@@ -90,6 +94,7 @@ const Menu: React.FC = () => {
               </Icon>
             </ListItemIcon>
             <ListItemText
+              disableTypography
               className={classes.menuLabel}
               primary="Configurações"
             />

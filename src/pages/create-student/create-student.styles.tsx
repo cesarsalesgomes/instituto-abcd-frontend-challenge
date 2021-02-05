@@ -17,6 +17,11 @@ const studentsStyles = makeStyles((theme) => ({
   formControl: {
     width: '100%',
   },
+  inputLabel: {
+    fontSize: 16,
+    color: '#47CDFF',
+    fontWeight: 700,
+  },
   inputRadius: {
     borderRadius: '10px',
   },
@@ -55,6 +60,8 @@ const studentsStyles = makeStyles((theme) => ({
     color: '#47CDFF',
     height: '47px',
     width: '218px',
+    fontWeight: 700,
+    fontSize: '18px',
   },
   gridItemSlider: {
     width: '100%',
@@ -95,6 +102,8 @@ const studentsStyles = makeStyles((theme) => ({
     color: 'white',
     height: '50px',
     boxShadow: '0px 4px 0px #25ABE6',
+    fontWeight: 700,
+    fontSize: '22px',
   },
 }));
 
