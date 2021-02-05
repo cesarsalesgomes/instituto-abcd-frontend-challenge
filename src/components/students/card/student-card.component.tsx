@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Typography, Card, CardContent, CardMedia, Box, Grid,
+  Typography, Card, CardContent, CardMedia, Grid,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import studentCardStyles from './student-card.style';
@@ -28,12 +28,12 @@ const StudentCard: React.FC<Student> = ({
         </Typography>
         <Typography className={classes.subTitle}>
           {schoolYear > 0 ? (
-            <Box>
+            <span>
               {schoolYear}
               ° ano
-            </Box>
+            </span>
           ) : (
-              <Box>Pré</Box>
+              <span>Pré</span>
             )}
         </Typography>
       </CardContent>

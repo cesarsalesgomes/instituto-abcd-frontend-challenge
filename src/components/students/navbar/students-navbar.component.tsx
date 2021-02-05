@@ -86,6 +86,7 @@ const StudentsNavbar: React.FC = () => {
               </InputAdornment>
             )}
             labelWidth={70}
+            inputProps={{ 'data-testid': 'search' }}
           />
         </FormControl>
         <Grid item xs={3}>

@@ -12,9 +12,12 @@ import FileUtils from '../../utils/File.utils';
 import FirebaseService from '../../services/firebase.service';
 
 describe('[Novo estudante] Testes', () => {
-  afterEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+  });
 
-  test('Botão de envio de formulário deve esta desabilitado com formulário vazio', () => {
+  test('Botão de envio de formulário deve esta desabilitado com formulário vazio', (done) => {
     const { getByTestId } = render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
@@ -26,6 +29,8 @@ describe('[Novo estudante] Testes', () => {
     const submitButton = getByTestId('button-submit');
 
     expect(submitButton).toBeDisabled();
+
+    done();
   });
 
   test('Espera que botão de envio de estudante esteja habilitado', async () => {
@@ -58,9 +63,9 @@ describe('[Novo estudante] Testes', () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+          <ToastContainer />
           <CreateStudent />
         </PersistGate>
-        <ToastContainer />
       </Provider>,
     );
 
@@ -78,7 +83,7 @@ describe('[Novo estudante] Testes', () => {
     fireEvent.change(schoolInput, { target: { value: 'Objetivo' } });
     fireEvent.click(terms);
 
-    jest.spyOn(FirebaseService, 'Instance', 'get').mockReturnValueOnce({
+    jest.spyOn(FirebaseService, 'Instance', 'get').mockReturnValue({
       uploadImageOnFirestorage: async () => ({} as any),
       createStudent: async () => ({} as any),
     } as any);

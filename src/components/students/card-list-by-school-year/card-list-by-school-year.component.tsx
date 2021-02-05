@@ -16,12 +16,12 @@ const StudentCardListBySchoolYear: React.FC<StudentsListBySchoolYear> = ({
     <Box>
       <Typography className={classes.title}>
         {schoolYear > 0 ? (
-          <Box>
+          <span>
             {schoolYear}
               ° ano
-          </Box>
+          </span>
         ) : (
-            <Box>Pré</Box>
+            <span>Pré</span>
           )}
       </Typography>
       <Divider className={classes.divider} />

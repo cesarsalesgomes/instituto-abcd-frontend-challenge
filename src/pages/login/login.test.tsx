@@ -4,16 +4,22 @@ import {
   cleanup, fireEvent, render, waitFor, screen,
 } from '@testing-library/react';
 import App from '../../App';
+import FirebaseService from '../../services/firebase.service';
 
 describe('[Login] Testes:', () => {
-  afterEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+  });
 
-  test('Botão de envio de formulário deve esta desabilitado com formulário vazio', () => {
+  test('Botão de envio de formulário deve esta desabilitado com formulário vazio', (done) => {
     const { getByTestId } = render(<App />);
 
     const submitButton = getByTestId('button-submit');
 
     expect(submitButton).toBeDisabled();
+
+    done();
   });
 
   test('Botão de envio de formulário deve estar desabilitado com formulário com email inválido e senha preenchida', async () => {
@@ -52,6 +58,10 @@ describe('[Login] Testes:', () => {
     fireEvent.change(emailInput, { target: { value: 'usuarioinexistente@gmail.com' } });
     fireEvent.change(passwordInput, { target: { value: 'usuarioinexistente' } });
 
+    jest.spyOn(FirebaseService, 'Instance', 'get').mockReturnValue({
+      signInWithEmailAndPassword: async () => { throw new Error(); },
+    } as any);
+
     fireEvent.click(submitButton);
 
     await waitFor(() => { });
@@ -69,18 +79,21 @@ describe('[Login] Testes:', () => {
     fireEvent.change(emailInput, { target: { value: 'cesar@gmail.com' } });
     fireEvent.change(passwordInput, { target: { value: 'cesargmail' } });
 
+    const jwtTokenMock = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+
+    jest.spyOn(FirebaseService, 'Instance', 'get').mockReturnValue({
+      signInWithEmailAndPassword: async () => { },
+      getAuthenticatedUserToken: async () => jwtTokenMock,
+    } as any);
+
     fireEvent.click(submitButton);
 
     await waitFor(() => { });
 
-    let text;
-
     try {
-      text = await screen.findByText('Usuário inválido.');
+      await screen.findByText('Usuário inválido.');
     } catch (error) {
-      text = null;
+      expect(error).toBeDefined();
     }
-
-    expect(text).toBeNull();
   });
 });

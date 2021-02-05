@@ -10,13 +10,9 @@ import RouteConstants from '../../constants/routes';
 import MessagesConstants from '../../constants/messages';
 import SchoolYear from '../../enums/school-grade.enum';
 
-function dispatchSuccess(dispatch: Dispatch<any>, history: any) {
+function dispatchSuccess(dispatch: Dispatch<any>) {
   dispatch(loadSuccess());
   toast.success(MessagesConstants.CREATE_STUDENT_SUCCESS, { position: toast.POSITION.BOTTOM_RIGHT });
-
-  try {
-    history.push(RouteConstants.STUDENTS_ROUTE);
-  } catch (error) { }
 }
 
 function dispatchError(dispatch: Dispatch<any>) {
@@ -36,7 +32,8 @@ const useCreateStudent = () => {
 
       await FirebaseService.Instance.createStudent({ name, schoolYear, imageUrl });
 
-      dispatchSuccess(dispatch, history);
+      dispatchSuccess(dispatch);
+
       history.push(RouteConstants.STUDENTS_ROUTE);
     } catch (error) {
       dispatchError(dispatch);
