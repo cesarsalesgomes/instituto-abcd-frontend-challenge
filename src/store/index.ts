@@ -6,22 +6,26 @@ import storage from 'redux-persist/lib/storage';
 import { LoginState } from './login/types';
 import { StudentsListState } from './students/list/types';
 import { CreateStudentState } from './students/create/types';
+import { NavbarState } from './navbar/types';
 
 /* Reducers */
 import login from './login';
 import studentsList from './students/list';
 import createStudent from './students/create';
+import navbar from './navbar';
 
 export interface ApplicationState {
   login: LoginState,
   studentsList: StudentsListState,
-  createStudent: CreateStudentState
+  createStudent: CreateStudentState,
+  navbar: NavbarState
 }
 
 const reducers = combineReducers({
   login,
   studentsList,
   createStudent,
+  navbar,
 });
 
 const persistConfig = {
