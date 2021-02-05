@@ -178,10 +178,10 @@ const CreateStudent: React.FC = () => {
               {/* Ano escolar */}
               <Grid item xs={12} className={classes.gridItem}>
                 <Grid container className={classes.containerCard}>
-                  <Grid item xs={12} sm={6} md={4} lg={4} className={classes.gridItem}>
+                  <Grid item sm={12} md={6} lg={5} className={classes.gridItem}>
                     <Box component="div" className={classes.schoolYearAvatarImage} />
                   </Grid>
-                  <Grid item xs={12} sm={6} md={8} lg={8} className={classes.gridItem}>
+                  <Grid item sm={12} md={6} lg={7} className={classes.gridItem}>
                     <Grid
                       container
                       direction="column"
