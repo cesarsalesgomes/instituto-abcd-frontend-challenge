@@ -9,15 +9,23 @@ import ListItemText from '@material-ui/core/ListItemText';
 import {
   Box, Grid, Icon, ListItemIcon,
 } from '@material-ui/core';
+import { useHistory } from 'react-router';
 import menuStyles from './menu.style';
 import Icon1 from '../../assets/icons/icon_menu_route_1.svg';
 import Icon2 from '../../assets/icons/icon_menu_route_2.svg';
 import Icon3 from '../../assets/icons/icon_menu_route_3.svg';
 import Icon4 from '../../assets/icons/icon_menu_route_4.svg';
 import Icon5 from '../../assets/icons/icon_menu_route_5.svg';
+import RouteConstants from '../../constants/routes';
 
 const Menu: React.FC = () => {
   const classes = menuStyles();
+  const history = useHistory();
+
+  const onClickStudentsList = (e: React.FormEvent) => {
+    e.preventDefault();
+    history.push(RouteConstants.STUDENTS_ROUTE);
+  };
 
   return (
     <div className={classes.root}>
@@ -35,7 +43,7 @@ const Menu: React.FC = () => {
         </Grid>
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem button onClick={onClickStudentsList}>
             <ListItemIcon>
               <Icon>
                 <img src={Icon1} height={25} width={25} />
