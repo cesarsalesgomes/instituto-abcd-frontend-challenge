@@ -54,4 +54,6 @@ Clone este repositório. Serão necessários node e npm instalados globalmente e
 
 `https://instituto-abcd-frontend-challenge.vercel.app/`
 
-<br />
+Usuário: cesar@gmail.com <br />
+
+Senha: cesargmail
